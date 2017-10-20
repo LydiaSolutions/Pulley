@@ -350,13 +350,13 @@ open class PulleyViewController: UIViewController {
     
     // withDuration: 0.3, delay: 0.0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.0, options: .curveEaseInOut,
 
-    @IBInspectable public var collapseAnimationDuration: TimeInterval = 0.3
+    @IBInspectable public var drawerAnimationDuration: TimeInterval = 0.3
     
-    @IBInspectable public var animationDelay: TimeInterval = 0.0
+    @IBInspectable public var drawerAnimationDelay: TimeInterval = 0.0
     
-    @IBInspectable public var animationSpringDamping: CGFloat = 0.75
+    @IBInspectable public var drawerAnimationSpringDamping: CGFloat = 0.75
     
-    @IBInspectable public var animationSpringInitialVelocity: CGFloat = 0.0
+    @IBInspectable public var drawerAnimationSpringInitialVelocity: CGFloat = 0.0
     
     public var animationOptions: UIViewAnimationOptions = [.curveEaseInOut]
     
@@ -701,7 +701,7 @@ open class PulleyViewController: UIViewController {
         
         if animated
         {
-            UIView.animate(withDuration: collapseAnimationDuration, delay: animationDelay, usingSpringWithDamping: animationSpringDamping, initialSpringVelocity: animationSpringInitialVelocity, options: animationOptions, animations: { [weak self] () -> Void in
+            UIView.animate(withDuration: drawerAnimationDuration, delay: drawerAnimationDelay, usingSpringWithDamping: drawerAnimationSpringDamping, initialSpringVelocity: drawerAnimationSpringInitialVelocity, options: animationOptions, animations: { [weak self] () -> Void in
                 
                 self?.drawerScrollView.setContentOffset(CGPoint(x: 0, y: stopToMoveTo - lowestStop), animated: false)
                 
