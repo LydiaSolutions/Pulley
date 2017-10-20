@@ -470,7 +470,7 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
     }
     
     /// The animation duration for setting the drawer position
-    @IBInspectable public var animationDuration: TimeInterval = 0.3
+    @IBInspectable public var collapseAnimationDuration: TimeInterval = 0.3
     
     /// The animation delay for setting the drawer position
     @IBInspectable public var animationDelay: TimeInterval = 0.0
@@ -1208,8 +1208,9 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
         
         if animated && self.view.window != nil
         {
+
             isAnimatingDrawerPosition = true
-            UIView.animate(withDuration: animationDuration, delay: animationDelay, usingSpringWithDamping: animationSpringDamping, initialSpringVelocity: animationSpringInitialVelocity, options: animationOptions, animations: { [weak self] () -> Void in
+            UIView.animate(withDuration: collapseAnimationDuration, delay: animationDelay, usingSpringWithDamping: animationSpringDamping, initialSpringVelocity: animationSpringInitialVelocity, options: animationOptions, animations: { [weak self] () -> Void in
                 
                 self?.drawerScrollView.setContentOffset(CGPoint(x: 0, y: stopToMoveTo - lowestStop), animated: false)
                 
