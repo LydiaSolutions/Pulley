@@ -469,17 +469,15 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
         }
     }
     
-    /// The animation duration for setting the drawer position
-    @IBInspectable public var collapseAnimationDuration: TimeInterval = 0.3
+    // withDuration: 0.3, delay: 0.0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.0, options: .curveEaseInOut,
+
+    @IBInspectable public var drawerAnimationDuration: TimeInterval = 0.3
     
-    /// The animation delay for setting the drawer position
-    @IBInspectable public var animationDelay: TimeInterval = 0.0
+    @IBInspectable public var drawerAnimationDelay: TimeInterval = 0.0
     
-    /// The spring damping for setting the drawer position
-    @IBInspectable public var animationSpringDamping: CGFloat = 0.75
+    @IBInspectable public var drawerAnimationSpringDamping: CGFloat = 0.75
     
-    /// The spring's initial velocity for setting the drawer position
-    @IBInspectable public var animationSpringInitialVelocity: CGFloat = 0.0
+    @IBInspectable public var drawerAnimationSpringInitialVelocity: CGFloat = 0.0
     
     /// This setting allows you to enable/disable Pulley automatically insetting the drawer on the left/right when in 'bottomDrawer' display mode in a horizontal orientation on a device with a 'notch' or other left/right obscurement.
     @IBInspectable public var adjustDrawerHorizontalInsetToSafeArea: Bool = true {
@@ -1210,7 +1208,7 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
         {
 
             isAnimatingDrawerPosition = true
-            UIView.animate(withDuration: collapseAnimationDuration, delay: animationDelay, usingSpringWithDamping: animationSpringDamping, initialSpringVelocity: animationSpringInitialVelocity, options: animationOptions, animations: { [weak self] () -> Void in
+            UIView.animate(withDuration: drawerAnimationDuration, delay: drawerAnimationDelay, usingSpringWithDamping: drawerAnimationSpringDamping, initialSpringVelocity: drawerAnimationSpringInitialVelocity, options: animationOptions, animations: { [weak self] () -> Void in
                 
                 self?.drawerScrollView.setContentOffset(CGPoint(x: 0, y: stopToMoveTo - lowestStop), animated: false)
                 
