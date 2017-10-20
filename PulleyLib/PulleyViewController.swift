@@ -690,13 +690,13 @@ open class PulleyViewController: UIViewController {
             stopToMoveTo = partialRevealHeight
             
         case .open:
-            stopToMoveTo = (self.drawerScrollView.bounds.height)
+            stopToMoveTo = (self.drawerScrollView.bounds.height  - topInset)
             
         case .closed:
             stopToMoveTo = 0
         }
         
-        let drawerStops = [(self.drawerScrollView.bounds.height), collapsedHeight, partialRevealHeight]
+        let drawerStops = [(self.drawerScrollView.bounds.height  - topInset), collapsedHeight, partialRevealHeight]
         let lowestStop = drawerStops.min() ?? 0
         
         if animated
@@ -938,7 +938,7 @@ extension PulleyViewController: UIScrollViewDelegate {
             
             if supportedPositions.contains(.open)
             {
-                drawerStops.append((self.drawerScrollView.bounds.height))
+                drawerStops.append((self.drawerScrollView.bounds.height  - topInset))
             }
             
             if supportedPositions.contains(.partiallyRevealed)
@@ -953,7 +953,7 @@ extension PulleyViewController: UIScrollViewDelegate {
             
             let lowestStop = drawerStops.min() ?? 0
             
-            let distanceFromBottomOfView = lowestStop + lastDragTargetContentOffset.y
+            let distanceFromBottomOfView = lowestStop + (lastDragTargetContentOffset.y  - lowestStop)
             
             var currentClosestStop = lowestStop
             
@@ -965,7 +965,7 @@ extension PulleyViewController: UIScrollViewDelegate {
                 }
             }
             
-            if abs(Float(currentClosestStop - (self.drawerScrollView.bounds.height))) <= Float.ulpOfOne && supportedPositions.contains(.open)
+            if abs(Float(currentClosestStop - (self.drawerScrollView.bounds.height  - topInset))) <= Float.ulpOfOne && supportedPositions.contains(.open)
             {
                 setDrawerPosition(position: .open, animated: true)
             }
