@@ -14,11 +14,11 @@ protocol PulleyPassthroughScrollViewDelegate: class {
     func viewToReceiveTouch(scrollView: PulleyPassthroughScrollView, point: CGPoint) -> UIView
 }
 
-class PulleyPassthroughScrollView: UIScrollView {
+public class PulleyPassthroughScrollView: UIScrollView {
     
     weak var touchDelegate: PulleyPassthroughScrollViewDelegate?
     
-    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+    override public func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         
         if
             let touchDelegate = touchDelegate,
