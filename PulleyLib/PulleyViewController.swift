@@ -490,7 +490,7 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
     }
     
     /// The animation options for setting the drawer position
-    public var animationOptions: UIView.AnimationOptions = [.curveEaseInOut]
+    public var drawerAnimationOptions: UIView.AnimationOptions = [.curveEaseInOut]
     
     /// The drawer snap mode
     public var snapMode: PulleySnapMode = .nearestPositionUnlessExceeded(threshold: 20.0)
@@ -1208,7 +1208,7 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
         {
 
             isAnimatingDrawerPosition = true
-            UIView.animate(withDuration: drawerAnimationDuration, delay: drawerAnimationDelay, usingSpringWithDamping: drawerAnimationSpringDamping, initialSpringVelocity: drawerAnimationSpringInitialVelocity, options: animationOptions, animations: { [weak self] () -> Void in
+            UIView.animate(withDuration: drawerAnimationDuration, delay: drawerAnimationDelay, usingSpringWithDamping: drawerAnimationSpringDamping, initialSpringVelocity: drawerAnimationSpringInitialVelocity, options: drawerAnimationOptions, animations: { [weak self] () -> Void in
                 
                 self?.drawerScrollView.setContentOffset(CGPoint(x: 0, y: stopToMoveTo - lowestStop), animated: false)
                 
