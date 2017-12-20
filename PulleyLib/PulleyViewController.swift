@@ -1304,7 +1304,6 @@ extension PulleyViewController: UIScrollViewDelegate {
     }
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
         if scrollView == drawerScrollView
         {
             var partialRevealHeight:CGFloat = kPulleyDefaultPartialRevealHeight
