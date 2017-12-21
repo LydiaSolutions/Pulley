@@ -36,6 +36,7 @@ class DrawerContentViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         gripperView.layer.cornerRadius = 2.5
+        tableView.bounces = true
     }
 }
 
@@ -50,7 +51,7 @@ extension DrawerContentViewController: PulleyDrawerViewControllerDelegate {
     func partialRevealDrawerHeight(bottomSafeArea: CGFloat) -> CGFloat
     {
         // For devices with a bottom safe area, we want to make our drawer taller. Your implementation may not want to do that. In that case, disregard the bottomSafeArea value.
-        return 264.0 + bottomSafeArea
+        return 450.0 + bottomSafeArea
     }
     
     func supportedDrawerPositions() -> [PulleyPosition] {
@@ -125,7 +126,7 @@ extension DrawerContentViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return 9
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -150,6 +151,11 @@ extension DrawerContentViewController: UITableViewDelegate {
             
             drawer.setPrimaryContentViewController(controller: primaryContent, animated: false)
         }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard scrollView.contentSize.height > scrollView.frame.height && scrollView.contentOffset.y <= -scrollView.contentInset.top else { return }
+        scrollView.contentOffset.y = -scrollView.contentInset.top
     }
 }
 

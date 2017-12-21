@@ -17,7 +17,9 @@ class PulleyScrollAdapter: NSObject {
     let childScrollView: UIScrollView
     
     var drawerScrollViewGestureStarted = false
+    var drawerScrollViewGestureChanged = false
     var childScrollViewGestureStarted = false
+    var childScrollViewGestureChanged = false
 
     var drawerScrollViewInitialOffsetForDrawer: CGFloat = 0
     var childScrollViewInitialOffsetForDrawer: CGFloat = 0
@@ -56,12 +58,11 @@ class PulleyScrollAdapter: NSObject {
             
         case .changed:
             guard drawerScrollViewGestureStarted && drawerScrollView.contentOffset.y == 559 else { return }
-            
+            print("translation \(gesture.translation(in: gesture.view!)) velocity \(gesture.velocity(in: gesture.view!))")
+
+            drawerScrollViewGestureChanged = true
             let translation = gesture.translation(in: gesture.view!)
             let padding = translation.y + drawerScrollView.contentOffset.y - drawerScrollViewInitialOffsetForDrawer
-            let offset = childScrollViewInitialOffsetForDrawer - padding
-            
-            guard offset + childScrollView.bounds.height < childScrollView.contentSize.height else { return }
             childScrollView.setContentOffset(CGPoint(x: childScrollView.contentOffset.x,y: childScrollViewInitialOffsetForDrawer - padding), animated: false)
             
         default:
@@ -69,15 +70,19 @@ class PulleyScrollAdapter: NSObject {
             drawerScrollViewInitialOffsetForDrawer = 0
             childScrollViewInitialOffsetForDrawer = 0
             drawerScrollViewGestureStarted = false
+            
+            guard drawerScrollViewGestureChanged else { return }
+            drawerScrollViewGestureChanged = false
+            print("drawerScrollViewGestureChanged translation \(gesture.translation(in: gesture.view!)) velocity \(gesture.velocity(in: gesture.view!))")
 
-            let targetContentOffset: UnsafeMutablePointer<CGPoint> = withUnsafeMutablePointer(to: &childScrollView.contentOffset) { $0 }
-            childScrollView.delegate?.scrollViewWillEndDragging?(childScrollView, withVelocity: .zero, targetContentOffset: targetContentOffset)
-            childScrollView.delegate?.scrollViewDidEndDragging?(childScrollView, willDecelerate: false)
+            let velocity = gesture.translation(in: gesture.view!)
+            
+            childScrollView.setContentOffset(CGPoint(x: childScrollView.contentOffset.x,y: childScrollView.contentOffset.y - velocity.y), animated: true)
         }
     }
     
     @objc fileprivate func handleChildScrollViewGesture(_ gesture: UIPanGestureRecognizer) {
-        print(childScrollView.contentOffset.y)
+//        print(childScrollView.contentOffset.y)
         switch gesture.state {
         case .began:
             childScrollViewGestureStarted = true
@@ -86,8 +91,9 @@ class PulleyScrollAdapter: NSObject {
             
         case .changed:
             guard childScrollViewGestureStarted && childScrollView.contentOffset.y == 0 else { return }
+            childScrollViewGestureChanged = true
+            
             let translation = gesture.translation(in: gesture.view!)
-
             let padding = translation.y + childScrollView.contentOffset.y - childScrollViewInitialOffsetForChild
             drawerScrollView.setContentOffset(CGPoint(x: childScrollView.contentOffset.x,y: drawerScrollViewInitialOffsetForChild - padding), animated: false)
             
@@ -96,6 +102,9 @@ class PulleyScrollAdapter: NSObject {
             childScrollViewInitialOffsetForChild = 0
             drawerScrollViewInitialOffsetForChild = 0
             childScrollViewGestureStarted = false
+            
+            guard childScrollViewGestureChanged else { return }
+            childScrollViewGestureChanged = false
             
             let targetContentOffset: UnsafeMutablePointer<CGPoint> = withUnsafeMutablePointer(to: &drawerScrollView.contentOffset) { $0 }
             drawerScrollView.delegate?.scrollViewWillEndDragging?(drawerScrollView, withVelocity: .zero, targetContentOffset: targetContentOffset)
