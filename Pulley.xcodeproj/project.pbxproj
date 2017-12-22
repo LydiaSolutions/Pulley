@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		041806AF1FEAD21D00124148 /* PulleyDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041806AB1FEAC0B200124148 /* PulleyDemoViewController.swift */; };
 		041806B21FEAD3F300124148 /* PulleyScrollAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041806B01FEAD3EF00124148 /* PulleyScrollAdapter.swift */; };
+		04EF657D1FEBF535008A9BB1 /* PulleyEndOfScrollAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF657B1FEBF51E008A9BB1 /* PulleyEndOfScrollAnimator.swift */; };
+		04EF65801FEBF9F1008A9BB1 /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF657E1FEBF8FC008A9BB1 /* UIScrollView+Extension.swift */; };
 		355DBF171E40EA4300671CDD /* Pulley.h in Headers */ = {isa = PBXBuildFile; fileRef = 355DBF151E40EA4300671CDD /* Pulley.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		355DBF1A1E40EA4300671CDD /* Pulley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 355DBF131E40EA4300671CDD /* Pulley.framework */; };
 		355DBF1B1E40EA4300671CDD /* Pulley.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 355DBF131E40EA4300671CDD /* Pulley.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -51,6 +53,8 @@
 /* Begin PBXFileReference section */
 		041806AB1FEAC0B200124148 /* PulleyDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulleyDemoViewController.swift; sourceTree = "<group>"; };
 		041806B01FEAD3EF00124148 /* PulleyScrollAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulleyScrollAdapter.swift; sourceTree = "<group>"; };
+		04EF657B1FEBF51E008A9BB1 /* PulleyEndOfScrollAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulleyEndOfScrollAnimator.swift; sourceTree = "<group>"; };
+		04EF657E1FEBF8FC008A9BB1 /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
 		355DBF131E40EA4300671CDD /* Pulley.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pulley.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		355DBF151E40EA4300671CDD /* Pulley.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pulley.h; sourceTree = "<group>"; };
 		355DBF161E40EA4300671CDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -132,6 +136,8 @@
 			children = (
 				C6DF73EB1D2E027500735EBC /* Main.storyboard */,
 				041806B01FEAD3EF00124148 /* PulleyScrollAdapter.swift */,
+				04EF657B1FEBF51E008A9BB1 /* PulleyEndOfScrollAnimator.swift */,
+				04EF657E1FEBF8FC008A9BB1 /* UIScrollView+Extension.swift */,
 				C6DF73D21D2DE2B500735EBC /* AppDelegate.swift */,
 				C6DF73D41D2DE2B500735EBC /* PrimaryContentViewController.swift */,
 				C6DF73E91D2DFE7F00735EBC /* DrawerContentViewController.swift */,
@@ -272,11 +278,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6131BB41D30429E002F27F3 /* PrimaryTransitionTargetViewController.swift in Sources */,
+				04EF657D1FEBF535008A9BB1 /* PulleyEndOfScrollAnimator.swift in Sources */,
 				041806B21FEAD3F300124148 /* PulleyScrollAdapter.swift in Sources */,
 				041806AF1FEAD21D00124148 /* PulleyDemoViewController.swift in Sources */,
 				C6DF73D51D2DE2B500735EBC /* PrimaryContentViewController.swift in Sources */,
 				C6DF73EA1D2DFE7F00735EBC /* DrawerContentViewController.swift in Sources */,
 				C6DF73D31D2DE2B500735EBC /* AppDelegate.swift in Sources */,
+				04EF65801FEBF9F1008A9BB1 /* UIScrollView+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

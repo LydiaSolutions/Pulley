@@ -33,13 +33,22 @@ class PulleyDemoViewController: PulleyViewController {
         
 //        childScrollView = (self.drawerContentViewController as! DrawerContentViewController).tableView
 //        drawerScrollView.panGestureRecognizer.addTarget(self, action: #selector(handlePanGesture(_:)))
-        adapter = PulleyScrollAdapter(drawerScrollView: drawerScrollView, childScrollView: (self.drawerContentViewController as! DrawerContentViewController).tableView)
+        adapter = PulleyScrollAdapter(drawerScrollView: drawerScrollView, childScrollView: (self.drawerContentViewController as! DrawerContentViewController).tableView,topInset: topInset)
+        
+        
         
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        print("drawerScrollView.bounds.height \(drawerScrollView.bounds.height) drawerScrollView.contentSize.height \(drawerScrollView.contentSize.height) self.drawerContentViewController.view.frame.height \(self.drawerContentViewController.view.frame.height) self.drawerScrollView.contentOffset.y \(self.drawerScrollView.contentOffset.y)")
+        
     }
     
     override func didReceiveMemoryWarning() {

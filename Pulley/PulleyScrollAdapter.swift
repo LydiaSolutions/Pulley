@@ -20,49 +20,47 @@ class PulleyScrollAdapter: NSObject {
     var drawerScrollViewGestureChanged = false
     var childScrollViewGestureStarted = false
     var childScrollViewGestureChanged = false
-
+    
+    let topInset: CGFloat
     var drawerScrollViewInitialOffsetForDrawer: CGFloat = 0
     var childScrollViewInitialOffsetForDrawer: CGFloat = 0
     var drawerScrollViewInitialOffsetForChild: CGFloat = 0
     var childScrollViewInitialOffsetForChild: CGFloat = 0
     
-    //constants
+    let endOfScrollAnimator: PulleyEndOfScrollAnimator
     
     // MARK: - init
     
-    init(drawerScrollView: UIScrollView,childScrollView: UIScrollView) {
+    init(drawerScrollView: UIScrollView,childScrollView: UIScrollView,topInset: CGFloat) {
         self.drawerScrollView = drawerScrollView
         self.childScrollView = childScrollView
+        self.topInset = topInset
+        endOfScrollAnimator = PulleyEndOfScrollAnimator(referenceView: childScrollView)
         super.init()
         
-        configure()
-    }
-    
-    // MARK: - instance methods
-    
-    func configure() {
         self.drawerScrollView.panGestureRecognizer.addTarget(self, action: #selector(handleDrawerScrollViewGesture(_:)))
         self.childScrollView.panGestureRecognizer.addTarget(self, action: #selector(handleChildScrollViewGesture(_:)))
-
+        
     }
     
     // MARK: - action
     
     @objc fileprivate func handleDrawerScrollViewGesture(_ gesture: UIPanGestureRecognizer) {
-        
         switch gesture.state {
         case .began:
+            guard drawerScrollView.contentOffset.y != drawerScrollView.maxContentOffset.y - topInset else { return }
             drawerScrollViewGestureStarted = true
+            endOfScrollAnimator.removeAllBehaviors()
             drawerScrollViewInitialOffsetForDrawer = drawerScrollView.contentOffset.y
             childScrollViewInitialOffsetForDrawer = childScrollView.contentOffset.y
             
         case .changed:
-            guard drawerScrollViewGestureStarted && drawerScrollView.contentOffset.y == 559 else { return }
-            print("translation \(gesture.translation(in: gesture.view!)) velocity \(gesture.velocity(in: gesture.view!))")
-
+            guard drawerScrollViewGestureStarted && drawerScrollView.contentOffset.y > drawerScrollView.maxContentOffset.y - topInset else { return }
             drawerScrollViewGestureChanged = true
+            
             let translation = gesture.translation(in: gesture.view!)
             let padding = translation.y + drawerScrollView.contentOffset.y - drawerScrollViewInitialOffsetForDrawer
+            print(padding)
             childScrollView.setContentOffset(CGPoint(x: childScrollView.contentOffset.x,y: childScrollViewInitialOffsetForDrawer - padding), animated: false)
             
         default:
@@ -73,29 +71,32 @@ class PulleyScrollAdapter: NSObject {
             
             guard drawerScrollViewGestureChanged else { return }
             drawerScrollViewGestureChanged = false
-            print("drawerScrollViewGestureChanged translation \(gesture.translation(in: gesture.view!)) velocity \(gesture.velocity(in: gesture.view!))")
-
-            let velocity = gesture.translation(in: gesture.view!)
             
-            childScrollView.setContentOffset(CGPoint(x: childScrollView.contentOffset.x,y: childScrollView.contentOffset.y - velocity.y), animated: true)
+            endOfScrollAnimator.animateEndOfScroll(for: gesture.velocity(in: gesture.view!))
         }
     }
     
     @objc fileprivate func handleChildScrollViewGesture(_ gesture: UIPanGestureRecognizer) {
-//        print(childScrollView.contentOffset.y)
         switch gesture.state {
         case .began:
             childScrollViewGestureStarted = true
+            endOfScrollAnimator.removeAllBehaviors()
             childScrollViewInitialOffsetForChild = childScrollView.contentOffset.y
             drawerScrollViewInitialOffsetForChild = drawerScrollView.contentOffset.y
             
         case .changed:
-            guard childScrollViewGestureStarted && childScrollView.contentOffset.y == 0 else { return }
+            print(drawerScrollView.contentOffset.y)
+            guard childScrollViewGestureStarted && (childScrollView.contentOffset.y + childScrollView.contentInset.top == 0 || drawerScrollView.contentOffset.y < drawerScrollView.maxContentOffset.y - topInset) else { return }
             childScrollViewGestureChanged = true
+            
+            if drawerScrollView.contentOffset.y < drawerScrollView.maxContentOffset.y - topInset && childScrollView.contentOffset.y + childScrollView.contentInset.top != 0 {
+                childScrollView.setContentOffset(CGPoint(x: childScrollView.contentOffset.x,y: 0), animated: false)
+            }
             
             let translation = gesture.translation(in: gesture.view!)
             let padding = translation.y + childScrollView.contentOffset.y - childScrollViewInitialOffsetForChild
-            drawerScrollView.setContentOffset(CGPoint(x: childScrollView.contentOffset.x,y: drawerScrollViewInitialOffsetForChild - padding), animated: false)
+            let offset = fmin(drawerScrollView.maxContentOffset.y - topInset,drawerScrollViewInitialOffsetForChild - padding)
+            drawerScrollView.setContentOffset(CGPoint(x: childScrollView.contentOffset.x,y: offset), animated: false)
             
         default:
             guard childScrollViewGestureStarted else { return }
@@ -112,3 +113,4 @@ class PulleyScrollAdapter: NSObject {
         }
     }
 }
+
