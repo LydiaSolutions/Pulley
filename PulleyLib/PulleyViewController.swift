@@ -1107,10 +1107,11 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
         }
     }
     
-    
-    /// add a scrollView (from the drawerContentViewController) if there is one to mimic the Apple mac app scrollBehavior
-    /// - Parameter scrollView: a UIScrollView from the drawerContentViewController
-    func addScrollBehavior(for scrollView: UIScrollView) {
+    /**
+     add a scrollView (from the drawerContentViewController) if there is one to mimic the Apple mac app scrollBehavior
+     - Parameter scrollView: a UIScrollView from the drawerContentViewController
+     */
+    public func addScrollBehavior(for scrollView: UIScrollView) {
         scrollAdapter = PulleyScrollAdapter(drawerScrollView: drawerScrollView,childScrollView: scrollView,topInset: topInset)
     }
     
