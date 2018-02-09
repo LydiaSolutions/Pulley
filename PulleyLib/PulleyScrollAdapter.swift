@@ -111,7 +111,11 @@ class PulleyScrollAdapter {
 
 extension UIScrollView {
     var maxContentOffset: CGPoint {
-        return CGPoint(x: contentSize.width - bounds.width + contentInset.right, y: contentSize.height - bounds.height + contentInset.bottom)
+        if #available(iOS 11, *) {
+            return CGPoint(x: contentSize.width - bounds.width + contentInset.right + safeAreaInsets.right, y: contentSize.height - bounds.height + contentInset.bottom + safeAreaInsets.bottom)
+        } else {
+            return CGPoint(x: contentSize.width - bounds.width + contentInset.right, y: contentSize.height - bounds.height + contentInset.bottom)
+        }
     }
     
     var canScrollDown: Bool {
