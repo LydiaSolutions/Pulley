@@ -72,7 +72,10 @@ class PulleyScrollAdapter {
         handleGesture(for: gesture.state, began: {
             childScrollView.setContentOffset(CGPoint(x: childScrollView.contentOffset.x,y: childScrollView.contentInset.top), animated: true)
         }, changed: {
-            guard scrollViewGestureStarted && drawerScrollView.contentOffset.y >= drawerScrollView.maxContentOffset.y - topInset else { return }
+            guard scrollViewGestureStarted && drawerScrollView.contentOffset.y >= drawerScrollView.maxContentOffset.y - topInset else {
+                childScrollView.setContentOffset(CGPoint(x: childScrollView.contentOffset.x,y: 0), animated: false)
+                return
+            }
             scrollViewGestureChanged = true
             
             let translation = gesture.translation(in: gesture.view!)
