@@ -765,6 +765,9 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
         drawerShadowView.transform = drawerScrollView.transform
         
         maskBackgroundDimmingView()
+        
+        guard !drawerScrollView.isDragging else { return }
+
         setDrawerPosition(position: drawerPosition, animated: false)
     }
 
