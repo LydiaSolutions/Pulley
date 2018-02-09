@@ -927,6 +927,9 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
         
         maskDrawerVisualEffectView()
         maskBackgroundDimmingView()
+        
+        guard !drawerScrollView.isDragging else { return }
+
         setDrawerPosition(position: drawerPosition, animated: false)
     }
 
