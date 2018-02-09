@@ -150,6 +150,7 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
     fileprivate let backgroundDimmingView: UIView = UIView()
     
     fileprivate var dimmingViewTapRecognizer: UITapGestureRecognizer?
+    fileprivate var scrollAdapter: PulleyScrollAdapter?
     
     fileprivate var lastDragTargetContentOffset: CGPoint = CGPoint.zero
 
@@ -1104,6 +1105,14 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
         {
             supportedPositions = PulleyPosition.all
         }
+    }
+    
+    /**
+     add a scrollView (from the drawerContentViewController) if there is one to mimic the Apple mac app scrollBehavior
+     - Parameter scrollView: a UIScrollView from the drawerContentViewController
+     */
+    public func addScrollBehavior(for scrollView: UIScrollView) {
+        scrollAdapter = PulleyScrollAdapter(drawerScrollView: drawerScrollView,childScrollView: scrollView,topInset: topInset)
     }
     
     // MARK: Actions

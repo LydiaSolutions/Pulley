@@ -17,7 +17,6 @@ class PulleyDemoViewController: PulleyViewController {
 //
 //    var childScrollView: UIScrollView!
     
-    var adapter: PulleyScrollAdapter!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,15 +28,7 @@ class PulleyDemoViewController: PulleyViewController {
         backgroundDimmingColor = UIColor.clear
         drawerCornerRadius = 5
 
-        // Do any additional setup after loading the view.
-        
-//        childScrollView = (self.drawerContentViewController as! DrawerContentViewController).tableView
-//        drawerScrollView.panGestureRecognizer.addTarget(self, action: #selector(handlePanGesture(_:)))
-        adapter = PulleyScrollAdapter(drawerScrollView: drawerScrollView, childScrollView: (self.drawerContentViewController as! DrawerContentViewController).tableView,topInset: topInset)
-        
-        
-        
-        
+        addScrollBehavior(for: (drawerContentViewController as! DrawerContentViewController).tableView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
