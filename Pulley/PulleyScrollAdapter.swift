@@ -60,7 +60,6 @@ class PulleyScrollAdapter: NSObject {
             
             let translation = gesture.translation(in: gesture.view!)
             let padding = translation.y + drawerScrollView.contentOffset.y - drawerScrollViewInitialOffsetForDrawer
-            print(padding)
             childScrollView.setContentOffset(CGPoint(x: childScrollView.contentOffset.x,y: childScrollViewInitialOffsetForDrawer - padding), animated: false)
             
         default:
@@ -85,17 +84,16 @@ class PulleyScrollAdapter: NSObject {
             drawerScrollViewInitialOffsetForChild = drawerScrollView.contentOffset.y
             
         case .changed:
-            print(drawerScrollView.contentOffset.y)
             guard childScrollViewGestureStarted && (childScrollView.contentOffset.y + childScrollView.contentInset.top == 0 || drawerScrollView.contentOffset.y < drawerScrollView.maxContentOffset.y - topInset) else { return }
             childScrollViewGestureChanged = true
             
-            if drawerScrollView.contentOffset.y < drawerScrollView.maxContentOffset.y - topInset && childScrollView.contentOffset.y + childScrollView.contentInset.top != 0 {
+            if drawerScrollView.contentOffset.y < drawerScrollView.maxContentOffset.y && childScrollView.contentOffset.y + childScrollView.contentInset.top != 0 {
                 childScrollView.setContentOffset(CGPoint(x: childScrollView.contentOffset.x,y: 0), animated: false)
             }
-            
+    
             let translation = gesture.translation(in: gesture.view!)
             let padding = translation.y + childScrollView.contentOffset.y - childScrollViewInitialOffsetForChild
-            let offset = fmin(drawerScrollView.maxContentOffset.y - topInset,drawerScrollViewInitialOffsetForChild - padding)
+            let offset = fmin(drawerScrollView.maxContentOffset.y,drawerScrollViewInitialOffsetForChild - padding)
             drawerScrollView.setContentOffset(CGPoint(x: childScrollView.contentOffset.x,y: offset), animated: false)
             
         default:

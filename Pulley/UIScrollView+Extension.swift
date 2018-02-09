@@ -11,7 +11,10 @@ import UIKit
 extension UIScrollView {
     
     var maxContentOffset: CGPoint {
-        return CGPoint(x: contentSize.width - bounds.width, y: contentSize.height - bounds.height)
+        if #available(iOS 11, *) {
+            return CGPoint(x: contentSize.width - bounds.width, y: contentSize.height - bounds.height + safeAreaInsets.bottom + safeAreaInsets.top)
+        } else {
+            return CGPoint(x: contentSize.width - bounds.width, y: contentSize.height - bounds.height)
+        }
     }
-    
 }

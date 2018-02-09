@@ -130,7 +130,9 @@ extension DrawerContentViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withIdentifier: "SampleCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SampleCell", for: indexPath)
+        cell.textLabel?.text = "\(indexPath.row)"
+        return cell
     }
 }
 
