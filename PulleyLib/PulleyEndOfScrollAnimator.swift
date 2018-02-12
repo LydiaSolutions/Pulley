@@ -45,10 +45,10 @@ class PulleyEndOfScrollAnimator: UIDynamicAnimator {
     // MARK: - instance methods
     
     func animateEndOfScroll(for velocity: CGPoint) {
-        guard decelerationBehavior == nil && fabs(velocity.y) > 100 else { return }
+        guard decelerationBehavior == nil else { return }
         
         let updatedVelocity = CGPoint(x: -velocity.x, y: -velocity.y)
-        scrollItem.center = referenceView?.center ?? .zero
+        scrollItem.center = scrollView.contentOffset
         
         decelerationBehavior = UIDynamicItemBehavior(items: [scrollItem])
         decelerationBehavior.addLinearVelocity(updatedVelocity, for: scrollItem)
