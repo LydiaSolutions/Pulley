@@ -126,7 +126,7 @@ extension DrawerContentViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 40
+        return 14
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -153,11 +153,6 @@ extension DrawerContentViewController: UITableViewDelegate {
             
             drawer.setPrimaryContentViewController(controller: primaryContent, animated: false)
         }
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard scrollView.contentSize.height > scrollView.frame.height && scrollView.contentOffset.y <= -scrollView.contentInset.top else { return }
-        scrollView.contentOffset.y = -scrollView.contentInset.top
     }
 }
 
