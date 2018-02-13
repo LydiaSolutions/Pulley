@@ -77,5 +77,6 @@ class PulleyEndOfScrollAnimator: UIDynamicAnimator {
     override func removeAllBehaviors() {
         super.removeAllBehaviors()
         decelerationBehavior = nil
+        springBehavior = nil
     }
 }
