@@ -66,10 +66,15 @@ class PulleyEndOfScrollAnimator: UIDynamicAnimator {
         guard decelerationBehavior != nil && springBehavior == nil && contentOffset.y > scrollView.maxContentOffset.y else { return }
         decelerationBehavior.resistance = 15
         
-        springBehavior = UIAttachmentBehavior(item: scrollItem, attachedToAnchor: CGPoint(x: 1, y: scrollView.maxContentOffset.y))
+        if #available(iOS 11, *) {
+            springBehavior = UIAttachmentBehavior(item: scrollItem, attachedToAnchor: CGPoint(x: 1, y: scrollView.maxContentOffset.y - scrollView.safeAreaInsets.bottom))
+        } else {
+            springBehavior = UIAttachmentBehavior(item: scrollItem, attachedToAnchor: CGPoint(x: 1, y: scrollView.maxContentOffset.y))
+        }
+        
         springBehavior.length = 0
         springBehavior.damping = 1
-        springBehavior.frequency = 2
+        springBehavior.frequency = 3
         
         addBehavior(springBehavior)
     }
