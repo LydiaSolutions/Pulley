@@ -1277,7 +1277,7 @@ extension PulleyViewController: UIScrollViewDelegate {
             
             let lowestStop = drawerStops.min() ?? 0
             
-            let distanceFromBottomOfView = lastDragTargetContentOffset.y
+            let distanceFromBottomOfView = lastDragTargetContentOffset.y + collapsedHeight
             
             var currentClosestStop = lowestStop
             
