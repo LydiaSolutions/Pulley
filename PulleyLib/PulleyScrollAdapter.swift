@@ -89,6 +89,11 @@ class PulleyScrollAdapter {
             let padding = translation.y + drawerScrollView.contentOffset.y - drawerScrollViewInitialOffset
             let offset = fmin(childScrollViewInitialOffset - padding, childScrollView.maxContentOffset.y)
             childScrollView.setContentOffset(CGPoint(x: childScrollView.contentOffset.x,y: offset), animated: false)
+            
+            guard childScrollView.keyboardDismissMode == .onDrag,
+                let childScrollViewSuperview = childScrollView.superview else { return }
+            
+            childScrollViewSuperview.endEditing(true)
         }) {
             guard drawerScrollView.contentOffset.y == drawerScrollView.maxContentOffset.y && childScrollView.canScrollDown  else { return }
             
