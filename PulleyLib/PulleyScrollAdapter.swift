@@ -112,7 +112,7 @@ class PulleyScrollAdapter {
             let offset = fmin(drawerScrollView.maxContentOffset.y,drawerScrollViewInitialOffset - padding)
             drawerScrollView.setContentOffset(CGPoint(x: childScrollView.contentOffset.x,y: offset), animated: false)
         }) {
-            guard drawerScrollView.contentOffset.y <= drawerScrollView.maxContentOffset.y - topInset && childScrollView.isAtOrigin else { return }
+            guard drawerScrollView.contentOffset.y <= drawerScrollView.maxContentOffset.y - topInset else { return }
             
             let targetContentOffset: UnsafeMutablePointer<CGPoint> = withUnsafeMutablePointer(to: &drawerScrollView.contentOffset) { $0 }
             targetContentOffset.pointee = drawerScrollView.contentOffset
