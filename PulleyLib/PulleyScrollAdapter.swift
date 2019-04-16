@@ -38,7 +38,7 @@ class PulleyScrollAdapter {
     
     // MARK: - instance method
     
-    fileprivate func handleGesture(isChild: Bool = false,for state: UIGestureRecognizerState,began: () -> Void = { },changed: () -> Void,ended: () -> Void) {
+    fileprivate func handleGesture(isChild: Bool = false,for state: UIGestureRecognizer.State,began: () -> Void = { },changed: () -> Void,ended: () -> Void) {
         guard childScrollView.maxContentOffset.y > 0  else { return }
         
         switch state {
