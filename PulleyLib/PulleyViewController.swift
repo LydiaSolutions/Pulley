@@ -480,6 +480,7 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
     
     @IBInspectable public var drawerAnimationSpringInitialVelocity: CGFloat = 0.0
     
+<<<<<<< HEAD
     /// This setting allows you to enable/disable Pulley automatically insetting the drawer on the left/right when in 'bottomDrawer' display mode in a horizontal orientation on a device with a 'notch' or other left/right obscurement.
     @IBInspectable public var adjustDrawerHorizontalInsetToSafeArea: Bool = true {
         didSet {
@@ -550,6 +551,9 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
             return drawerScrollView.panGestureRecognizer
         }
     }
+=======
+    public var drawerAnimationOptions: UIView.AnimationOptions = [.curveEaseInOut]
+>>>>>>> update swift & xcode
     
     /// The drawer positions supported by the drawer
     fileprivate var supportedPositions: [PulleyPosition] = PulleyPosition.all {
@@ -1027,7 +1031,11 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
         let maskLayer = CAShapeLayer()
 
         // Invert mask to cut away the bottom part of the dimming view
+<<<<<<< HEAD
         borderPath.append(UIBezierPath(rect: backgroundDimmingView.bounds))
+=======
+        path.append(UIBezierPath(rect: backgroundDimmingView.bounds))
+>>>>>>> update swift & xcode
         maskLayer.fillRule = CAShapeLayerFillRule.evenOdd
         
         maskLayer.path = borderPath.cgPath
