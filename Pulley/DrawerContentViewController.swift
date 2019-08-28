@@ -52,6 +52,7 @@ class DrawerContentViewController: UIViewController {
             let feedbackGenerator = UISelectionFeedbackGenerator()
             self.pulleyViewController?.feedbackGenerator = feedbackGenerator
         }
+        pulleyViewController?.addScrollBehavior(for: tableView)
     }
 
     override func viewWillLayoutSubviews() {
@@ -93,7 +94,7 @@ extension DrawerContentViewController: PulleyDrawerViewControllerDelegate {
     }
     
     func supportedDrawerPositions() -> [PulleyPosition] {
-        return PulleyPosition.all // You can specify the drawer positions you support. This is the same as: [.open, .partiallyRevealed, .collapsed, .closed]
+        return [.open, .partiallyRevealed]//PulleyPosition.all // You can specify the drawer positions you support. This is the same as: [.open, .partiallyRevealed, .collapsed, .closed]
     }
     
     // This function is called by Pulley anytime the size, drawer position, etc. changes. It's best to customize your VC UI based on the bottomSafeArea here (if needed). Note: You might also find the `pulleySafeAreaInsets` property on Pulley useful to get Pulley's current safe area insets in a backwards compatible (with iOS < 11) way. If you need this information for use in your layout, you can also access it directly by using `drawerDistanceFromBottom` at any time.

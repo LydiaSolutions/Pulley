@@ -32,7 +32,7 @@ class PulleyScrollAdapter {
         self.childScrollView = childScrollView
         self.topInset = topInset
         endOfScrollAnimator = PulleyEndOfScrollAnimator(referenceView: childScrollView)
-        self.drawerScrollView.panGestureRecognizer.addTarget(self, action: #selector(handleDrawerScrollViewGesture(_:)))
+        self.drawerScrollView.panGestureRecognizer.addTarget(self, action: #selector(handleChildScrollViewGesture(_:)))
         self.childScrollView.panGestureRecognizer.addTarget(self, action: #selector(handleChildScrollViewGesture(_:)))
     }
     
