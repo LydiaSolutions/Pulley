@@ -316,6 +316,7 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
         didSet {
             if self.isViewLoaded
             {
+                self.drawerShadowView.layer.shadowOpacity = shadowOpacity
                 self.view.setNeedsLayout()
             }
         }
@@ -326,6 +327,7 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
         didSet {
             if self.isViewLoaded
             {
+                self.drawerShadowView.layer.shadowRadius = shadowRadius
                 self.view.setNeedsLayout()
             }
         }
