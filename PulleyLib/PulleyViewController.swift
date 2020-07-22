@@ -354,6 +354,8 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
         }
     }
     
+    public var backgroundTouchEnabled = true
+    
     @IBInspectable public var delaysContentTouches: Bool = true {
         didSet {
             if self.isViewLoaded
@@ -1225,8 +1227,7 @@ extension PulleyViewController: PulleyPassthroughScrollViewDelegate {
     {
         if currentDisplayMode == .bottomDrawer
         {
-            if drawerPosition == .open
-            {
+            if drawerPosition == .open && backgroundTouchEnabled {
                 return backgroundDimmingView
             }
             
