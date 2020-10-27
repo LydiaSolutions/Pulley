@@ -14,6 +14,7 @@
 		355DBF1B1E40EA4300671CDD /* Pulley.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 355DBF131E40EA4300671CDD /* Pulley.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		355DBF201E40EA5C00671CDD /* PulleyPassthroughScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6131BB71D305995002F27F3 /* PulleyPassthroughScrollView.swift */; };
 		355DBF211E40EA5F00671CDD /* PulleyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6131BB81D305995002F27F3 /* PulleyViewController.swift */; };
+		853FCF2622F9F98F006829F2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853FCF2422F9F98D006829F2 /* MapKit.framework */; };
 		C6131BB41D30429E002F27F3 /* PrimaryTransitionTargetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6131BB31D30429E002F27F3 /* PrimaryTransitionTargetViewController.swift */; };
 		C6C51DDD1F5108980079B57F /* UIView+constrainToParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C51DDC1F5108980079B57F /* UIView+constrainToParent.swift */; };
 		C6DF73D31D2DE2B500735EBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DF73D21D2DE2B500735EBC /* AppDelegate.swift */; };
@@ -22,6 +23,8 @@
 		C6DF73DD1D2DE2B500735EBC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6DF73DB1D2DE2B500735EBC /* LaunchScreen.storyboard */; };
 		C6DF73EA1D2DFE7F00735EBC /* DrawerContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DF73E91D2DFE7F00735EBC /* DrawerContentViewController.swift */; };
 		C6DF73EC1D2E027500735EBC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6DF73EB1D2E027500735EBC /* Main.storyboard */; };
+		D2C07C7C2129BC8B00ED38D7 /* CustomMaskExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C07C7A2129BC0F00ED38D7 /* CustomMaskExample.swift */; };
+		E15E853120BE56B900800173 /* UIViewController+PulleyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15E853020BE56B900800173 /* UIViewController+PulleyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +57,7 @@
 		355DBF131E40EA4300671CDD /* Pulley.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pulley.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		355DBF151E40EA4300671CDD /* Pulley.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pulley.h; sourceTree = "<group>"; };
 		355DBF161E40EA4300671CDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		853FCF2422F9F98D006829F2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C6131BB31D30429E002F27F3 /* PrimaryTransitionTargetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryTransitionTargetViewController.swift; sourceTree = "<group>"; };
 		C6131BB71D305995002F27F3 /* PulleyPassthroughScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PulleyPassthroughScrollView.swift; path = PulleyLib/PulleyPassthroughScrollView.swift; sourceTree = SOURCE_ROOT; };
 		C6131BB81D305995002F27F3 /* PulleyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PulleyViewController.swift; path = PulleyLib/PulleyViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -66,6 +70,8 @@
 		C6DF73DE1D2DE2B500735EBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6DF73E91D2DFE7F00735EBC /* DrawerContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerContentViewController.swift; sourceTree = "<group>"; };
 		C6DF73EB1D2E027500735EBC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		D2C07C7A2129BC0F00ED38D7 /* CustomMaskExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMaskExample.swift; sourceTree = "<group>"; };
+		E15E853020BE56B900800173 /* UIViewController+PulleyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+PulleyViewController.swift"; path = "PulleyLib/UIViewController+PulleyViewController.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				853FCF2622F9F98F006829F2 /* MapKit.framework in Frameworks */,
 				355DBF1A1E40EA4300671CDD /* Pulley.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -91,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				355DBF151E40EA4300671CDD /* Pulley.h */,
+				E15E853020BE56B900800173 /* UIViewController+PulleyViewController.swift */,
 				C6131BB71D305995002F27F3 /* PulleyPassthroughScrollView.swift */,
 				041BBD171FEFC5CD001C8981 /* PulleyEndOfScrollAnimator.swift */,
 				041BBD181FEFC5CE001C8981 /* PulleyScrollAdapter.swift */,
@@ -99,6 +107,14 @@
 				355DBF161E40EA4300671CDD /* Info.plist */,
 			);
 			path = Pulley;
+			sourceTree = "<group>";
+		};
+		853FCF2322F9F98D006829F2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				853FCF2422F9F98D006829F2 /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		C6131BB21D303FE0002F27F3 /* Supporting Files */ = {
@@ -117,6 +133,7 @@
 				C6DF73D11D2DE2B500735EBC /* Demo App */,
 				355DBF141E40EA4300671CDD /* Pulley */,
 				C6DF73D01D2DE2B500735EBC /* Products */,
+				853FCF2322F9F98D006829F2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,6 +154,7 @@
 				C6DF73D41D2DE2B500735EBC /* PrimaryContentViewController.swift */,
 				C6DF73E91D2DFE7F00735EBC /* DrawerContentViewController.swift */,
 				C6131BB31D30429E002F27F3 /* PrimaryTransitionTargetViewController.swift */,
+				D2C07C7A2129BC0F00ED38D7 /* CustomMaskExample.swift */,
 				C6131BB21D303FE0002F27F3 /* Supporting Files */,
 			);
 			name = "Demo App";
@@ -201,7 +219,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = 52inc;
 				TargetAttributes = {
 					355DBF121E40EA4300671CDD = {
@@ -213,13 +231,13 @@
 					C6DF73CE1D2DE2B500735EBC = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = P87N88ZC7B;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
 			buildConfigurationList = C6DF73CA1D2DE2B500735EBC /* Build configuration list for PBXProject "Pulley" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				English,
@@ -262,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E15E853120BE56B900800173 /* UIViewController+PulleyViewController.swift in Sources */,
 				355DBF201E40EA5C00671CDD /* PulleyPassthroughScrollView.swift in Sources */,
 				355DBF211E40EA5F00671CDD /* PulleyViewController.swift in Sources */,
 				041BBD1A1FEFC5CE001C8981 /* PulleyScrollAdapter.swift in Sources */,
@@ -275,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6131BB41D30429E002F27F3 /* PrimaryTransitionTargetViewController.swift in Sources */,
+				D2C07C7C2129BC8B00ED38D7 /* CustomMaskExample.swift in Sources */,
 				C6DF73D51D2DE2B500735EBC /* PrimaryContentViewController.swift in Sources */,
 				C6DF73EA1D2DFE7F00735EBC /* DrawerContentViewController.swift in Sources */,
 				C6DF73D31D2DE2B500735EBC /* AppDelegate.swift in Sources */,
@@ -361,19 +381,29 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -409,19 +439,29 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -451,14 +491,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P87N88ZC7B;
 				INFOPLIST_FILE = Pulley/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.52inc.Pulley;
 				PRODUCT_NAME = PulleyDemo;
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -467,6 +507,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P87N88ZC7B;
 				INFOPLIST_FILE = Pulley/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -474,8 +515,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.52inc.Pulley;
 				PRODUCT_NAME = PulleyDemo;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

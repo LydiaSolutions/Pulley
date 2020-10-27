@@ -20,12 +20,11 @@ public class PulleyPassthroughScrollView: UIScrollView {
     
     override public func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         
-        if let touchDel = touchDelegate
+        if
+            let touchDelegate = touchDelegate,
+            touchDelegate.shouldTouchPassthroughScrollView(scrollView: self, point: point)
         {
-            if touchDel.shouldTouchPassthroughScrollView(scrollView: self, point: point)
-            {
-                return touchDel.viewToReceiveTouch(scrollView: self, point: point).hitTest(touchDel.viewToReceiveTouch(scrollView: self, point: point).convert(point, from: self), with: event)
-            }
+            return touchDelegate.viewToReceiveTouch(scrollView: self, point: point).hitTest(touchDelegate.viewToReceiveTouch(scrollView: self, point: point).convert(point, from: self), with: event)
         }
         
         return super.hitTest(point, with: event)
