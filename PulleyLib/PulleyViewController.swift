@@ -1470,7 +1470,7 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
      - Parameter scrollView: a UIScrollView from the drawerContentViewController
      */
     public func addScrollBehavior(for scrollView: UIScrollView) {
-        scrollAdapter = PulleyScrollAdapter(drawerScrollView: drawerScrollView,childScrollView: scrollView,topInset: topInset)
+        scrollAdapter = PulleyScrollAdapter(drawerScrollView: drawerScrollView,childScrollView: scrollView,topInset: drawerTopInset)
     }
 
     // MARK: Actions
