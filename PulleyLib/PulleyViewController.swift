@@ -185,7 +185,7 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
             
             controller.didMove(toParent: self)
 
-            if self.isViewLoaded
+            if oldValue != primaryContentViewController, self.isViewLoaded
             {
                 self.view.setNeedsLayout()
                 self.setNeedsSupportedDrawerPositionsUpdate()
@@ -220,9 +220,10 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
             
             controller.didMove(toParent: self)
 
-            if self.isViewLoaded
-            {
-                self.view.setNeedsLayout()
+            if self.isViewLoaded {
+                if oldValue != drawerContentViewController {
+                    self.view.setNeedsLayout()
+                }
                 self.setNeedsSupportedDrawerPositionsUpdate()
             }
         }
@@ -273,7 +274,7 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
     /// The inset from the top safe area when fully open. NOTE: When in 'leftSide' displayMode this is the distance to the bottom of the screen.
     @IBInspectable public var topInset: CGFloat = 20.0 {
         didSet {
-            if self.isViewLoaded
+            if oldValue != topInset, self.isViewLoaded
             {
                 self.view.setNeedsLayout()
             }
@@ -283,7 +284,7 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
     /// When in 'leftSide' displayMode, this is used to calculate the left and top insets from the edge of the screen.
     @IBInspectable public var panelInset: CGFloat = 10.0 {
         didSet {
-            if self.isViewLoaded
+            if oldValue != panelInset, self.isViewLoaded
             {
                 self.view.setNeedsLayout()
             }
@@ -293,7 +294,7 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
     /// The width of the panel in leftSide displayMode
     @IBInspectable public var panelWidth: CGFloat = 325.0 {
         didSet {
-            if self.isViewLoaded
+            if oldValue != panelWidth, self.isViewLoaded
             {
                 self.view.setNeedsLayout()
             }
@@ -303,9 +304,10 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
     /// The corner radius for the drawer.
     @IBInspectable public var drawerCornerRadius: CGFloat = 13.0 {
         didSet {
-            if self.isViewLoaded
-            {
-                self.view.setNeedsLayout()
+            if self.isViewLoaded {
+                if oldValue != drawerCornerRadius {
+                    self.view.setNeedsLayout()
+                }
                 drawerBackgroundVisualEffectView?.layer.cornerRadius = drawerCornerRadius
             }
         }
@@ -314,9 +316,11 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
     /// The opacity of the drawer shadow.
     @IBInspectable public var shadowOpacity: Float = 0.1 {
         didSet {
-            if self.isViewLoaded
-            {
-                self.view.setNeedsLayout()
+            if self.isViewLoaded {
+                self.drawerShadowView.layer.shadowOpacity = shadowOpacity
+                if oldValue != shadowOpacity {
+                    self.view.setNeedsLayout()
+                }
             }
         }
     }
@@ -324,9 +328,11 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
     /// The radius of the drawer shadow.
     @IBInspectable public var shadowRadius: CGFloat = 3.0 {
         didSet {
-            if self.isViewLoaded
-            {
-                self.view.setNeedsLayout()
+            if self.isViewLoaded {
+                self.drawerShadowView.layer.shadowRadius = shadowRadius
+                if oldValue != shadowRadius {
+                    self.view.setNeedsLayout()
+                }
             }
         }
     }
@@ -352,6 +358,8 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
         }
     }
     
+    public var backgroundTouchEnabled = true
+    
     @IBInspectable public var delaysContentTouches: Bool = true {
         didSet {
             if self.isViewLoaded
@@ -376,7 +384,7 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
     /// The display mode for Pulley. Default is 'bottomDrawer', which preserves the previous behavior of Pulley. If you want it to adapt automatically, choose 'automatic'. The current display mode is available by using the 'currentDisplayMode' property.
     public var displayMode: PulleyDisplayMode = .bottomDrawer {
         didSet {
-            if self.isViewLoaded
+            if oldValue != displayMode, self.isViewLoaded
             {
                 self.view.setNeedsLayout()
             }
@@ -422,7 +430,9 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
                 return
             }
             
-            self.view.setNeedsLayout()
+            if oldValue != supportedPositions {
+                self.view.setNeedsLayout()
+            }
             
             if supportedPositions.contains(drawerPosition)
             {
@@ -444,13 +454,10 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
     /// The currently rendered display mode for Pulley. This will match displayMode unless you have it set to 'automatic'. This will provide the 'actual' display mode (never automatic).
     public fileprivate(set) var currentDisplayMode: PulleyDisplayMode = .automatic {
         didSet {
-            if self.isViewLoaded
-            {
-                self.view.setNeedsLayout()
-            }
-            
-            if oldValue != currentDisplayMode
-            {
+            if oldValue != currentDisplayMode {
+                if self.isViewLoaded {
+                    self.view.setNeedsLayout()
+                }
                 delegate?.drawerDisplayModeDidChange?(drawer: self)
                 (drawerContentViewController as? PulleyDrawerViewControllerDelegate)?.drawerDisplayModeDidChange?(drawer: self)
                 (primaryContentContainer as? PulleyPrimaryContentControllerDelegate)?.drawerDisplayModeDidChange?(drawer: self)
@@ -1223,8 +1230,7 @@ extension PulleyViewController: PulleyPassthroughScrollViewDelegate {
     {
         if currentDisplayMode == .bottomDrawer
         {
-            if drawerPosition == .open
-            {
+            if drawerPosition == .open && backgroundTouchEnabled {
                 return backgroundDimmingView
             }
             
