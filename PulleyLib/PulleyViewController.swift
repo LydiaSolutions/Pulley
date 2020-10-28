@@ -1610,7 +1610,7 @@ extension PulleyViewController: UIScrollViewDelegate {
   // Original proposition
   // public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
 
-    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    open func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
 
 
         if scrollView == drawerScrollView
@@ -1748,13 +1748,13 @@ extension PulleyViewController: UIScrollViewDelegate {
 
     public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
     */
-    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    open func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         if scrollView == drawerScrollView {
             self.isChangingDrawerPosition = true
         }
     }
 
-    public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+    open func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
 
         prepareFeedbackGenerator()
 
